@@ -1,0 +1,9 @@
+FROM tomcat:9.0.1-jre8-alpine
+
+ADD ./target/* /usr/local/tomcat/webapps/
+
+COPY ./catalina-dynamic-port.sh catalina-dynamic-port.sh
+
+RUN chmod u+x catalina-dynamic-port.sh
+
+CMD ["./catalina-dynamic-port.sh", "run"]
